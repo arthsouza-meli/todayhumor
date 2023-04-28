@@ -1,35 +1,22 @@
-name: Deploy to AWS S3
+name: deploy
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ master ]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Setup Node.js 14.x
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          node-version: 14.x
-
-      - name: Checkout source code
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build app
-        run: npm run build
-
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --delete --acl public-read --follow-symlinks --exclude '.git/*' --exclude '.github/*' --exclude '*.md' --exclude '*.yaml' --exclude '*.yml' --exclude '*.json' --exclude '*.lock' --exclude '*.log' --exclude 'node_modules/*' ${GITHUB_WORKSPACE}/build s3://${{ secrets.AWS_S3_BUCKET_NAME }}/ --region ${{ secrets.AWS_REGION }}
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_NAME }} 
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_S3_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET_NAME }}
-          SECRET_KEY: ${{ secrets.SECRET_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+      - name: Build React App
+        run: npm install && npm run build
+      - name: Deploy app build to S3 bucket
+        run: aws s3 sync ./build/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
