@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<MoodForm />} />
         <Route path="/result" element={<MoodResult />} />
       </Routes>
-     {/* <Footer /> */}
+     <Footer />
     </div>
   );
 }
