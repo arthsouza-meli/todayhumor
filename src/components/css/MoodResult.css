@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .clock-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  
+  .message-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .next-submission-time {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+  
+  .clock-face {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .circle {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 4;
+    stroke-dasharray: 0, 10000;
+    transition: stroke-dasharray 1s linear;
+  }
+  
+  .time {
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .circle.progress {
+    stroke: #28a745;
+    stroke-dasharray: 0, 10000;
+  }
+  
