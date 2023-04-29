@@ -7,7 +7,7 @@ function MoodResult() {
   const [nextSubmissionTime, setNextSubmissionTime] = useState('');
 
   useEffect(() => {
-    fetch('/api/mood')
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/mood`)
       .then(response => response.json())
       .then(data => {
         setAverageMood(data.averageMood);

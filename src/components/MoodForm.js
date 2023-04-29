@@ -25,7 +25,7 @@ function MoodForm() {
     }
 
     event.preventDefault();
-    fetch('/api/mood', {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/mood`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
