@@ -15,4 +15,3 @@ dist/
 
 # Miscellaneous
 .DS_Store
-src/setupProxy.js
