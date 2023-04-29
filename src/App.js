@@ -1,11 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-
 import MoodForm from './components/MoodForm';
 import MoodResult from './components/MoodResult';
-import Footer from './components/Footer';
 import { analytics } from "./firebaseConfig";
+import { useEffect } from "react";
 
 function App() {
   useEffect(() => {

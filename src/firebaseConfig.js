@@ -1,5 +1,6 @@
-import firebase from "firebase/app";
-import "firebase/analytics";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -12,5 +13,6 @@ const firebaseConfig = {
   };
 
 
-firebase.initializeApp(firebaseConfig);
-export const analytics = firebase.analytics();
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const analytics = getAnalytics(app);
