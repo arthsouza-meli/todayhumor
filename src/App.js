@@ -5,8 +5,13 @@ import { Routes, Route } from 'react-router-dom';
 import MoodForm from './components/MoodForm';
 import MoodResult from './components/MoodResult';
 import Footer from './components/Footer';
+import { analytics } from "./firebaseConfig";
 
 function App() {
+  useEffect(() => {
+    analytics.logEvent("page_view");
+  }, []);
+
   return (
     <div className="container">
       <Routes>
