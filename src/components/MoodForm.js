@@ -56,15 +56,15 @@ function MoodForm() {
             </span>
           </label>
           <label>
-            <input type="radio" name="mood" value="bad" checked={mood === 'bad'} onChange={handleMoodChange} />
-            <span role="img" aria-label="bad" className={mood === 'bad' ? 'selected' : ''}>
-              😔
-            </span>
-          </label>
-          <label>
             <input type="radio" name="mood" value="neutral" checked={mood === 'neutral'} onChange={handleMoodChange} />
             <span role="img" aria-label="neutral" className={mood === 'neutral' ? 'selected' : ''}>
               😐
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="mood" value="bad" checked={mood === 'bad'} onChange={handleMoodChange} />
+            <span role="img" aria-label="bad" className={mood === 'bad' ? 'selected' : ''}>
+              😔
             </span>
           </label>
         </div>
