@@ -49,16 +49,17 @@ function MoodForm() {
       <h2>Your mood will help us calculate the overall mood of the world today.</h2>
       <form onSubmit={handleSubmit}>
         <div className="radio-group">
-          <label>
-            <input type="radio" name="mood" value="good" checked={mood === 'good'} onChange={handleMoodChange} />
-            <span role="img" aria-label="good" className={mood === 'good' ? 'selected' : ''}>
-              😊
-            </span>
-          </label>
+
           <label>
             <input type="radio" name="mood" value="bad" checked={mood === 'bad'} onChange={handleMoodChange} />
             <span role="img" aria-label="bad" className={mood === 'bad' ? 'selected' : ''}>
               😔
+            </span>
+          </label>
+          <label>
+            <input type="radio" name="mood" value="good" checked={mood === 'good'} onChange={handleMoodChange} />
+            <span role="img" aria-label="good" className={mood === 'good' ? 'selected' : ''}>
+              😊
             </span>
           </label>
           <label>
